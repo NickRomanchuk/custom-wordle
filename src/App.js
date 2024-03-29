@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     wordList = wordLists[wordLength - 4]
   },[wordLength])
-  console.log(wordList)
 
   return (
     <div className='d-flex justify-content-center'>

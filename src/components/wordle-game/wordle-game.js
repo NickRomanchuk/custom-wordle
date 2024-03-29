@@ -30,8 +30,6 @@ function WordleGame(wordleGameProps) {
         }
       } else if (pressedKey == 'ent') {
           if (!wordleGameProps.wordList.includes(guessedWords[guessedWords.length - 1].toLowerCase())) {
-            console.log("guessed word:", guessedWords[guessedWords.length - 1].toLowerCase())
-            console.log(wordleGameProps.wordList.includes(guessedWords[guessedWords.length - 1].toLowerCase()))
             wordleGameProps.setMessage("Not in word list!")
             wordleGameProps.setShowAlert(true)
           } else {
