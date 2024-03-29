@@ -6,6 +6,8 @@ import { Keyboard } from 'components/keyboard/keyboard';
 import { useEffect, useState } from 'react';
 import { fourLetterWords } from 'constants/constants';
 import { Alert } from 'components/alert/alert';
+import { endGame } from 'utils/endGame';
+import { updateColors } from 'utils/updateColors';
 
 function App() {
   let wordSize = 4
@@ -20,27 +22,6 @@ function App() {
   
   useEffect(() => {
     if (correctWord == '') {
-      var classNames = ["key-correct", "key-maybe", "key-wrong"]
-
-      for (var i = 0; i < classNames.length; i++) {
-        var elements = document.getElementsByClassName(classNames[i]);
-        var length = elements.length
-        for (var j = 0; j < length; j++) {
-          elements[0].className="key-button";
-        }
-      }
-
-      var wordElements = document.querySelectorAll('.cell')
-      var length = wordElements.length
-      for (var i = 0; i < length; i++) {
-        if (wordElements) {
-          // @ts-ignore
-          wordElements[i].style.backgroundColor = "white";
-          // @ts-ignore
-          wordElements[i].style.borderColor = "darkgray";
-        }
-      }
-
       setCorrectWord(fourLetterWords[Math.floor(Math.random()*fourLetterWords.length)])
       setGuessedWords([''])
     }
@@ -58,47 +39,20 @@ function App() {
         }
       } else if (pressedKey == 'ent') {
           if (!fourLetterWords.includes(guessedWords[guessedWords.length - 1].toLowerCase())) {
-            setMessage("Not a word!")
+            setMessage("Not in word list!")
             setShowAlert(true)
           } else {
             if (guessedWords[guessedWords.length - 1].toLowerCase() == correctWord) {
-              setMessage("You Win!")
-              setShowAlert(true)
-              setCorrectWord('')
+              updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
+              endGame(true, setMessage, setShowAlert, setCorrectWord)
             } else {
               if (guessedWords.length == numGuesses) {
-                setMessage("You lose!")
-                setShowAlert(true)
-                setCorrectWord('')
+                updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
+                endGame(false, setMessage, setShowAlert, setCorrectWord)
               } else {
                 setGuessedWords([...guessedWords, ''])
-                  for (let i = 0; i < guessedWords[guessedWords.length - 1].length; i++) {
-                  var guess = guessedWords[guessedWords.length - 1]
-
-                  if (guess[i].toLowerCase() == correctWord[i]) {
-                    document.getElementById(guess[i]).className = "key-correct"
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.background = 'green'
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.borderColor = 'black'
-                    
-                  } else if (correctWord.includes(guess[i].toLowerCase())) {
-
-                    if (document.getElementById(guess[i]).className != "key-correct") {
-                      document.getElementById(guess[i]).className = "key-maybe";
-                    }
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.background = 'yellow'
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.borderColor = 'black'
-
-                  } else {
-
-                    if (document.getElementById(guess[i]).className != "key-correct" &&
-                    document.getElementById(guess[i]).className != "key-maybe" ) {
-                      document.getElementById(guess[i]).className = "key-wrong";
-                    }
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.background = 'gray'
-                    document.getElementById((guessedWords.length-1).toString().concat(i.toString())).style.borderColor = 'black'
-                  }
-                }
-            }
+                updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
+              }
             }
           }
       } else {
@@ -118,7 +72,7 @@ function App() {
         message={message}
       />
       <Row className='d-flex justify-content-center pt-4'>
-          <h1 style={{textAlign:'center', marginBottom:'0px'}}>NICK'S WORDLE</h1>   
+          <h1 className='title-header'>NICK'S WORDLE</h1>   
       </Row>
       <Row className='d-flex justify-content-center pt-4'>
         <WordleBlock

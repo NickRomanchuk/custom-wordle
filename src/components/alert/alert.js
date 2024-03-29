@@ -7,7 +7,7 @@ export function Alert(alertProps) {
         <Toast 
             show={alertProps.showAlert} 
             onClose={() => alertProps.setShowAlert(false)}
-            delay={1000} autohide
+            delay={2000} autohide
             className='alert'>
           <Toast.Body>{alertProps.message}</Toast.Body>
         </Toast>

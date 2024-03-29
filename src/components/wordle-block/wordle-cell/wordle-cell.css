@@ -3,11 +3,37 @@
     font-size: 30px;
     font-weight: bold;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 0;
     border-color: darkgray;
     border-width: 2px;
 }
 
-.cell:inValid {
-    border-color: black;
+.cell-correct {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #6AAA64;
+    border-radius: 0;
+    border-color: #6AAA64  !important;
+    border-width: 2px;
+}
+
+.cell-maybe {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #C9B458;
+    border-radius: 0;
+    border-color: #C9B458  !important;
+    border-width: 2px;
+}
+
+.cell-wrong {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #787C7E;
+    border-radius: 0;
+    border-color: #787C7E !important;
+    border-width: 2px;
 }

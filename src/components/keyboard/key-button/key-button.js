@@ -1,9 +1,10 @@
 import { Button, Col } from "react-bootstrap";
 import "./key-button.css"
+import { useState } from "react";
 
 export function KeyButton(keyButtonProps){
     return(
-        <Col className="key-column ps-1 pe-1" xs={1}>
+       <Col className="key-column ps-1 pe-1" xs={1}>
             <Button 
                 onClick={() => keyButtonProps.setPressedKey(keyButtonProps.letter)}
                 className="key-button"
