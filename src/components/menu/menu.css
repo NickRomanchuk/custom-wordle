@@ -1,0 +1,37 @@
+
+.ok-button {
+    width: 100%;
+    background-color: blue;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 18px;
+    letter-spacing: .02em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+
+.form-label {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 18px;
+    letter-spacing: .02em;
+}
+
+.drop-down {
+    padding-left: 30px;
+    font-weight: bold;
+    letter-spacing: .02em;
+    background-color: lightgray;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}
+
+.menu-form {
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.option {
+    font-weight: bold;
+    letter-spacing: .02em;
+    background-color: lightgray;
+    border: none;
+}

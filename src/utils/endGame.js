@@ -1,4 +1,4 @@
-export function endGame(win, setMessage, setShowAlert, setCorrectWord) {
+export function endGame(win, setMessage, setShowAlert, setShowMenu, setGuessedWords, setNewGame) {
     if (win)
         setMessage("You Win!")
     else {
@@ -6,7 +6,7 @@ export function endGame(win, setMessage, setShowAlert, setCorrectWord) {
     }
     
     setShowAlert(true)
-    setTimeout(()=>{setCorrectWord(''); resetColors()}, 2000)
+    setTimeout(()=>{setNewGame(true); setGuessedWords(['']); setShowMenu(true); resetColors()}, 2000)
 }
 
 function resetColors() {

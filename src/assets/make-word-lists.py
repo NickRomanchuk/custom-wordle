@@ -9,6 +9,6 @@ for file in files:
     letterList = re.sub('\d', ' ', letterFile.read()).split()
     letterFile.close()
 
-    letterLists.write(file + 'Letters: ' + str(letterList)+'\n\n')
+    letterLists.write(file + 'Letters: ' + str(letterList).lower()+'\n\n')
     
 letterLists.close()

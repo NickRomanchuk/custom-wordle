@@ -10,5 +10,4 @@ html, body, #root, #app{
     font-weight: bolder;
     font-size: 36px;
     letter-spacing: .02em;
-    text-shadow: rgba(0, 0, 0, 0.4) 4px 5px 6px;
 }
