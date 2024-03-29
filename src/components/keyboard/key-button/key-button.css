@@ -1,0 +1,68 @@
+.key-button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+}
+
+.key-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.key-correct {
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+}
+
+.key-correct:hover {
+    background-color: black;
+    color: white;
+}
+
+.key-maybe {
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+}
+
+.key-maybe:hover {
+    background-color: black;
+    color: white;
+}
+
+.key-wrong {
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 100%;
+}
+
+.key-wrong:hover {
+    background-color: black;
+    color: white;
+}
+
+.key-column{
+    display: flex;
+    justify-content: center;
+}

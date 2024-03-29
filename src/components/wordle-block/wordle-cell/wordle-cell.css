@@ -1,0 +1,13 @@
+.cell {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    border-color: darkgray;
+    border-width: 2px;
+}
+
+.cell:inValid {
+    border-color: black;
+}
