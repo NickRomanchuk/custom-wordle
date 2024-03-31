@@ -2,78 +2,60 @@ import './wordle-game.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import { endGame } from 'utils/endGame';
-import { updateColors } from 'utils/updateColors';
 import { WordleBlock } from './wordle-block/wordle-block';
 import { Keyboard } from './keyboard/keyboard';
+import { Alert } from './alert/alert';
+import { DELETE_KEY_NAME, ENTER_KEY_NAME} from 'constants/constants';
+import { initNewGame } from 'components/wordle-game/utils/initGame';
+import { handleDelete, handleEnter, handleLetter } from 'components/wordle-game/utils/buttonHandlers';
 
 function WordleGame(wordleGameProps) {
   const [correctWord, setCorrectWord] = useState('')
   const [pressedKey, setPressedKey] = useState('')
   const [guessedWords, setGuessedWords] = useState([''])
-  const [newGame, setNewGame] = useState(true)
-  
+  const [showAlert, setShowAlert] = useState(false)
+  const [message, setMessage] = useState('')
+
   useEffect(() => {
-    setCorrectWord(wordleGameProps.wordList[Math.floor(Math.random()*wordleGameProps.wordList.length)])
-    setNewGame(false)
-  },[newGame, wordleGameProps.wordLength])
-  console.log("The correct word is:", correctWord)
+    if (wordleGameProps.newGame) {
+      initNewGame(wordleGameProps.wordLength, setCorrectWord);
+    }
+  },[wordleGameProps.newGame])
 
   useEffect(()=>{
-      if (pressedKey == 'del') {
-        if (guessedWords[guessedWords.length - 1].length <= 0) {
-          wordleGameProps.setMessage("Nothing to delete!")
-          wordleGameProps.setShowAlert(true)
-        } else {
-          let guess = guessedWords[guessedWords.length - 1].slice(0, -1) 
-          setGuessedWords([...guessedWords.slice(0, -1), guess])
-        }
-      } else if (pressedKey == 'ent') {
-          if (!wordleGameProps.wordList.includes(guessedWords[guessedWords.length - 1].toLowerCase())) {
-            wordleGameProps.setMessage("Not in word list!")
-            wordleGameProps.setShowAlert(true)
-          } else {
-            if (guessedWords[guessedWords.length - 1].toLowerCase() == correctWord) {
-              updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
-              endGame(true, wordleGameProps.setMessage, wordleGameProps.setShowAlert, wordleGameProps.setShowMenu, setGuessedWords, setNewGame)
-            } else {
-              if (guessedWords.length == wordleGameProps.numGuesses) {
-                updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
-                endGame(false, wordleGameProps.setMessage, wordleGameProps.setShowAlert, wordleGameProps.setShowMenu, setGuessedWords, setNewGame)
-              } else {
-                setGuessedWords([...guessedWords, ''])
-                updateColors(guessedWords[guessedWords.length - 1], correctWord, guessedWords.length - 1)
-              }
-            }
-          }
+      if (pressedKey == DELETE_KEY_NAME) {
+        handleDelete(guessedWords, setMessage, setShowAlert, setGuessedWords)
+      } else if (pressedKey == ENTER_KEY_NAME) {
+        handleEnter(correctWord, wordleGameProps.wordLength, wordleGameProps.numGuesses, guessedWords, setMessage, setShowAlert, wordleGameProps.setShowMenu, setGuessedWords, setCorrectWord)
       } else {
-          if (!(guessedWords[guessedWords.length - 1].length >= wordleGameProps.wordLength)) {
-            let guess = guessedWords[guessedWords.length - 1].concat(pressedKey) 
-            setGuessedWords([...guessedWords.slice(0, -1), guess])
-          }
+        handleLetter(pressedKey, guessedWords, wordleGameProps.wordLength, setGuessedWords)
       }
       setPressedKey('')
   },[pressedKey])
 
   return (
-    <Row className='d-flex justify-content-center align-items-between' id='app'>
-      <Row className='d-flex justify-content-center pt-4'>
-          <h1 className='title-header'>NICK'S WORDLE</h1>   
+    <Col>
+      <Alert 
+            setShowAlert={setShowAlert}
+            showAlert={showAlert}
+            message={message}
+      />
+      <Row className='pt-4'>
+        <h1 className='title-header'>NICK'S WORDLE</h1>   
       </Row>
       <Row className='d-flex justify-content-center pt-4'>
         <WordleBlock
-              columns = {wordleGameProps.wordLength}
-              rows = {wordleGameProps.numGuesses}
-              guessedWords = {guessedWords}/>
+          columns = {wordleGameProps.wordLength}
+          rows = {wordleGameProps.numGuesses}
+          guessedWords = {guessedWords}
+        />
       </Row>
-      <Row className='d-flex justify-content-center pt-4'>
-        <Col className='d-flex align-items-center' xs={10}>
-          <Keyboard
-            setPressedKey={setPressedKey}
-          />
-        </Col>
+      <Row className='d-flex justify-content-center pt-4 ps-5 pe-5'>
+        <Keyboard
+          setPressedKey={setPressedKey}
+        />
       </Row>
-    </Row>
+    </Col>
   );
 }
 

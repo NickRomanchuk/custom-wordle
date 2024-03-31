@@ -1,6 +1,5 @@
 import { Button, Col } from "react-bootstrap";
 import "./key-button.css"
-import { useState } from "react";
 
 export function KeyButton(keyButtonProps){
     return(

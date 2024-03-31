@@ -1,5 +1,6 @@
 import { Toast } from "react-bootstrap";
 import "./alert.css"
+import { ALERT_DELAY } from "constants/constants";
 
 export function Alert(alertProps) {
 
@@ -7,7 +8,7 @@ export function Alert(alertProps) {
         <Toast 
             show={alertProps.showAlert} 
             onClose={() => alertProps.setShowAlert(false)}
-            delay={2000} autohide
+            delay={ALERT_DELAY} autohide
             className='alert'>
           <Toast.Body>{alertProps.message}</Toast.Body>
         </Toast>

@@ -3,7 +3,7 @@ import "./menu.css"
 
 export function Menu(menuProps) {
     return (
-        <Modal show={menuProps.showMenu}>
+        <Modal className='menu' show={menuProps.showMenu}>
             <Modal.Body>
                 <Row>
                     <Form className="menu-form"> 
