@@ -1,23 +1,29 @@
 export function updateColors(guess, correctWord, guesses) {
-    for (let i = 0; i < guess.length; i++) {
-        if (guess[i].toLowerCase() === correctWord[i]) {
-          document.getElementById(guess[i]).className = "key-correct"
-          document.getElementById(guesses.toString().concat(i.toString())).className = 'cell-correct form-control'
-          
-        } else if (correctWord.includes(guess[i].toLowerCase())) {
+  for (let i = 0; i < guess.length; i++) {                                // for each letter in the guess
+    var charGuess = guess[i]
+    var charCorrect = correctWord[i]
+    var id = guesses.toString().concat(i.toString())
 
-          if (document.getElementById(guess[i]).className !== "key-correct") {
-            document.getElementById(guess[i]).className = "key-maybe";
-          }
-          document.getElementById(guesses.toString().concat(i.toString())).className = 'cell-maybe form-control'
-          
-        } else {
+    var correctLoc = (charGuess.toLowerCase() === charCorrect)            // check if letter is in the correct location
+    var inWord = correctWord.includes(guess[i].toLowerCase())             // check if letter is in the word
 
-          if (document.getElementById(guess[i]).className !== "key-correct" &&
-          document.getElementById(guess[i]).className !== "key-maybe" ) {
-            document.getElementById(guess[i]).className = "key-wrong";
-          }
-          document.getElementById(guesses.toString().concat(i.toString())).className = 'cell-wrong form-control'
-        }
+    var element;
+    if (correctLoc) {                                                     // if in correct location
+      document.getElementById(charGuess).className = "key-correct"        // update classnames
+      document.getElementById(id).className = 'cell-correct form-control'
+    } else if (inWord) {                                                  // if in word
+      element = document.getElementById(charGuess)                        // update classnames
+      if (element.className !== "key-correct") {
+        element.className = "key-maybe";
       }
+      document.getElementById(id).className = 'cell-maybe form-control'
+    } else {                                                              // if not in word
+      element = document.getElementById(charGuess)                        // update classnames
+      if (element.className !== "key-correct" &&
+      element.className !== "key-maybe" ) {
+        element.className = "key-wrong";
+      }
+      document.getElementById(id).className = 'cell-wrong form-control'
+    }
+  }
 }

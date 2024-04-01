@@ -1,32 +1,31 @@
 import { END_GAME_PAUSE, LOSE_MESSAGE, WIN_MESSAGE } from "constants/constants";
 
-export function endGame(win, setMessage, setShowAlert, setShowMenu, setGuessedWords, setCorrectWord) {
-    if (win)
-        setMessage(WIN_MESSAGE)
+export function endGame(win, setMessage, setShowAlert, setShowMenu, setGuessedWords) {
+    if (win)                     // If game ended because of win...
+        setMessage(WIN_MESSAGE)  // Set message to win message
     else {
-        setMessage(LOSE_MESSAGE)
+        setMessage(LOSE_MESSAGE) // Set message to lose message
     }
-    
-    setShowAlert(true)
-    setTimeout(()=>{setCorrectWord(''); setGuessedWords(['']); setShowMenu(true); resetColors()}, END_GAME_PAUSE)
+    setShowAlert(true)           // Display the end game alert
+
+    setTimeout(()=>{setGuessedWords(['']); setShowMenu(true); resetColors()}, END_GAME_PAUSE) // reset the guessed words, display menu and reset colors, after pause
 }
 
 function resetColors() {
-    var classNames = ["key-correct", "key-maybe", "key-wrong"]
-    for (var i = 0; i < classNames.length; i++) {
-        var elements = document.getElementsByClassName(classNames[i]);
-        var length = elements.length
-        for (var j = 0; j < length; j++) {
-            elements[0].className="key-button";
-        }
-    }
+    var keyClassNames = ["key-correct", "key-maybe", "key-wrong"]       // define the classnames for the keys
+    var cellClassNames = ["cell-correct", "cell-maybe", "cell-wrong"]   // define the classnames for the cells
 
-    classNames = ["cell-correct", "cell-maybe", "cell-wrong"]
-    for (i = 0; i < classNames.length; i++) {
-        elements = document.getElementsByClassName(classNames[i]);
-        length = elements.length
-        for (j = 0; j < length; j++) {
-            elements[0].className="cell form-control";
+    resetClassNames(keyClassNames, "key-button")                        // reset all the key classnames to key-button
+    resetClassNames(cellClassNames, "cell form-control")                // reset all the key classnames to cell form-control
+}
+
+function resetClassNames(oldClassNames, newClassName) {
+    for (var className of oldClassNames) {                              // for each classname in provided list of classnames
+        var elements = document.getElementsByClassName(className);      // get all the elements with that classname
+       
+        var length = elements.length        
+        for (var i = 0; i < length; i++) {                              // loop over each of those elements
+            elements[0].className = newClassName;                       // set the classname to the provided new classname
         }
     }
 }

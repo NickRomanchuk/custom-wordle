@@ -3,8 +3,8 @@ import { Col, Row } from "react-bootstrap";
 
 
 export function WordleBlock(wordleblockProps) {
-    let columns = Array.from(Array(wordleblockProps.columns).keys())
-    let rows = Array.from(Array(wordleblockProps.rows).keys())
+    let columns = Array.from(Array(wordleblockProps.columns).keys()) // make an array of size of columns
+    let rows = Array.from(Array(wordleblockProps.rows).keys())       // make an array of size of rows
 
     return (
             <Col md={8}>

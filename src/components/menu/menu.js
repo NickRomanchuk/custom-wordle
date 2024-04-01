@@ -1,10 +1,12 @@
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import "./menu.css"
+import { LOWEST_WORD_LENGTH, NUM_GUESSES_DROPDOWN, WORD_LENGTH_DROPDOWN } from "constants/constants";
 
 export function Menu(menuProps) {
+
     return (
-        <Modal className='menu' show={menuProps.showMenu}>
-            <Modal.Body>
+        <Modal show={menuProps.showMenu}>
+            <Modal.Body >
                 <Row>
                     <Form className="menu-form"> 
                         <Form.Label className="form-label d-flex justify-content-center">
@@ -14,10 +16,9 @@ export function Menu(menuProps) {
                             className='drop-down'
                             defaultValue={menuProps.wordLength}
                             onChange={(e) => (menuProps.setWordLength(Number(e.currentTarget.value)))}>
-                            <option className="option" value={4}>Four Letters</option>
-                            <option className="option" value={5}>Five Letters</option>
-                            <option className="option" value={6}>Six Letters</option>
-                            <option className="option" value={7}>Seven Letters</option>
+                                {WORD_LENGTH_DROPDOWN.map((option, index)=>
+                                    <option className="option" value={index + LOWEST_WORD_LENGTH}>{option}</option>
+                                )}
                         </Form.Select>
                     </Form>
                 </Row>
@@ -30,14 +31,9 @@ export function Menu(menuProps) {
                             className='drop-down'
                             defaultValue={menuProps.numGuesses}
                             onChange={(e) => (menuProps.setNumGuesses(Number(e.currentTarget.value)))}>
-                            <option className="option" value={1}>One</option>
-                            <option className="option" value={2}>Two</option>
-                            <option className="option" value={3}>Three</option>
-                            <option className="option" value={4}>Four</option>
-                            <option className="option" value={5}>Five</option>
-                            <option className="option" value={6}>Six</option>
-                            <option className="option" value={7}>Seven</option>
-                            <option className="option" value={8}>Eight</option>
+                                {NUM_GUESSES_DROPDOWN.map((option, index)=>
+                                    <option className="option" value={index+1}>{option}</option>
+                                )}
                         </Form.Select>
                     </Form>
                 </Row>
