@@ -37,7 +37,7 @@ function WordleGame(wordleGameProps) {
   },[pressedKey])
 
   return (
-    <Col>
+    <div className='wordle-game'>
       <Alert 
             setShowAlert={setShowAlert}
             showAlert={showAlert}
@@ -46,19 +46,19 @@ function WordleGame(wordleGameProps) {
       <Row className='pt-4'>
         <h1 className='title-header'>NICK'S WORDLE</h1>   
       </Row>
-      <Row className='d-flex justify-content-center pt-4'>
+      <Row className='wordle-row d-flex justify-content-center pt-4'>
         <WordleBlock
           columns = {wordleGameProps.wordLength}
           rows = {wordleGameProps.numGuesses}
           guessedWords = {guessedWords}
         />
       </Row>
-      <Row className='d-flex justify-content-center pt-4 ps-5 pe-5'>
+      <Row className='wordle-row d-flex justify-content-center pt-4 pb-3'>
         <Keyboard
           setPressedKey={setPressedKey}
         />
       </Row>
-    </Col>
+    </div>
   );
 }
 

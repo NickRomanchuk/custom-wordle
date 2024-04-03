@@ -5,7 +5,7 @@ import { LOWEST_WORD_LENGTH, NUM_GUESSES_DROPDOWN, WORD_LENGTH_DROPDOWN } from "
 export function Menu(menuProps) {
 
     return (
-        <Modal show={menuProps.showMenu}>
+        <Modal className="menu-modal" show={menuProps.showMenu}>
             <Modal.Body >
                 <Row>
                     <Form className="menu-form"> 

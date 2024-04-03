@@ -7,7 +7,7 @@ export function Keyboard (keyboardProps) {
     return (
         <Container className="keyboard-container"> 
             {keyRows.map((keyRow, index)=>
-                <Row className="d-flex justify-content-center pt-2 pb-2">
+                <Row className={"keyboard-row d-flex justify-content-center".concat((index == 0) ? " pt-2 pb-1" : "").concat((index == keyRows.length - 1) ? " pt-1 pb-2" : " pt-1 pb-1")}>
                     {keyRow.map((lett, index)=>(
                         <KeyButton
                             letter={lett}

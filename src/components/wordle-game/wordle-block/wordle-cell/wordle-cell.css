@@ -6,6 +6,7 @@
     border-radius: 0;
     border-color: darkgray;
     border-width: 2px;
+    padding: 0;
 }
 
 .cell-correct {
@@ -16,6 +17,7 @@
     border-radius: 0;
     border-color: #6AAA64  !important;
     border-width: 2px;
+    padding: 0;
 }
 
 .cell-maybe {
@@ -26,6 +28,7 @@
     border-radius: 0;
     border-color: #C9B458  !important;
     border-width: 2px;
+    padding: 0;
 }
 
 .cell-wrong {
@@ -36,4 +39,5 @@
     border-radius: 0;
     border-color: #787C7E !important;
     border-width: 2px;
+    padding: 0;
 }

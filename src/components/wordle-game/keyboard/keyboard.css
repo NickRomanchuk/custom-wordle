@@ -1,4 +1,12 @@
 .keyboard-container {
     background-color: lightgray;
     border-radius: 5px;
+    min-height: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.keyboard-row {
+    height: 33.3%;
 }

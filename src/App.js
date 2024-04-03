@@ -12,7 +12,7 @@ function App() {
   const [numGuesses, setNumGuesses] = useState(DEFULT_NUM_GUESS)  // int to change the number of guesses allowed
 
   return (
-    <div>
+    <div className='app'>
       <Menu 
         showMenu={showMenu}
         setShowMenu={setShowMenu}
