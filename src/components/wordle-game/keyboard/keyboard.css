@@ -1,10 +1,10 @@
 .keyboard-container {
-    background-color: lightgray;
-    border-radius: 5px;
+    background-color: black;
     min-height: 125px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 .keyboard-row {

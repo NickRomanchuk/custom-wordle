@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-customwordle-dev-3b0ef-authRole",
+      "UnauthRoleArn": "arn:aws:iam::121290183657:role/amplify-customwordle-dev-3b0ef-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::121290183657:role/amplify-customwordle-dev-3b0ef-authRole",
+      "Region": "ca-central-1",
+      "DeploymentBucketName": "amplify-customwordle-dev-3b0ef-deployment",
+      "UnauthRoleName": "amplify-customwordle-dev-3b0ef-unauthRole",
+      "StackName": "amplify-customwordle-dev-3b0ef",
+      "StackId": "arn:aws:cloudformation:ca-central-1:121290183657:stack/amplify-customwordle-dev-3b0ef/35e91f80-34da-11ef-808d-0e724c3c3b1d",
+      "AmplifyAppId": "d212ycrx5rhmob"
+    },
+    "categories": {
+      "auth": {
+        "customwordle704a9627": {}
+      },
+      "api": {
+        "customwordle": {}
+      }
+    }
+  }
+}

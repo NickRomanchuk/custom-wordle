@@ -9,6 +9,7 @@ import { Alert } from './alert/alert';
 import { DELETE_KEY_NAME, ENTER_KEY_NAME} from 'constants/constants';
 import { initNewGame } from 'components/wordle-game/utils/initGame';
 import { handleDelete, handleEnter, handleLetter } from 'components/wordle-game/utils/buttonHandlers';
+import { WordleCell } from './wordle-block/wordle-cell/wordle-cell';
 
 function WordleGame(wordleGameProps) {
   const [correctWord, setCorrectWord] = useState('')      // state variable for the correct word we are tyring to guess
@@ -16,6 +17,26 @@ function WordleGame(wordleGameProps) {
   const [guessedWords, setGuessedWords] = useState([''])  // state variable to keep a list of all guessed words
   const [showAlert, setShowAlert] = useState(false)       // state variable to display helpful message alerts
   const [message, setMessage] = useState('')              // state variable for what message to show in the alert
+
+  function handleKeyDown(event) {
+    if (!wordleGameProps.newGame) return;
+    
+    if (event.key === "Enter") {
+      setPressedKey(ENTER_KEY_NAME);
+    } else if (event.key === "Backspace") {
+      setPressedKey(DELETE_KEY_NAME);
+    } else if (event.keyCode >= 65 && event.keyCode <= 90){
+      setPressedKey(event.key.toUpperCase())
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
 
   // useEffect for whenever the newGame variable is updated
   useEffect(() => {
@@ -36,6 +57,8 @@ function WordleGame(wordleGameProps) {
       setPressedKey('')                                                         // reset the pressed key to empty (this allows double clicks to be registered)
   },[pressedKey])
 
+  let columns = Array.from(Array(wordleGameProps.wordLength).keys())
+
   return (
     <div className='wordle-game'>
       <Alert 
@@ -43,22 +66,35 @@ function WordleGame(wordleGameProps) {
             showAlert={showAlert}
             message={message}
       />
-      <Row className='pt-4'>
-        <h1 className='title-header'>NICK'S WORDLE</h1>   
-      </Row>
-      <Row className='wordle-row d-flex justify-content-center pt-4'>
+      <Row className='wordle-row'>
+        <Col></Col>
         <WordleBlock
-          columns = {wordleGameProps.wordLength}
-          rows = {wordleGameProps.numGuesses}
-          guessedWords = {guessedWords}
-        />
+            columns = {wordleGameProps.wordLength}
+            rows = {wordleGameProps.numGuesses}
+            guessedWords = {guessedWords}
+          />
+        <Col className='p-3 d-flex flex-column justify-content-center'>
+          <Row className='pb-2 m-0'>
+            <h2 className='title-header'>ANSWER</h2>   
+          </Row>
+          <Row className="pb-5 m-0">
+            {columns.map((column, colIndex)=>(
+              <WordleCell
+                letter={""}
+                className={`solution ${column}`}
+                index={`solution-${column}`}
+                key={colIndex}
+              />
+            ))}
+          </Row>
+        </Col>
       </Row>
-      <Row className='wordle-row d-flex justify-content-center pt-4 pb-3'>
+      <Row className='fullKeyboard'>
         <Keyboard
           setPressedKey={setPressedKey}
         />
       </Row>
-    </div>
+    </div >
   );
 }
 

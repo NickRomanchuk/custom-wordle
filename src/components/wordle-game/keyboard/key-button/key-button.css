@@ -5,13 +5,13 @@
     font-weight: bold;
     font-size: 16px;
     color: black;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(255, 255, 255, 0.6) 5px 5px 15px;
     width: 100%;
     padding: 0;
 }
 
 .key-button:hover{
-    background-color: black;
+    background-color: gray;
     color: white;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .key-correct:hover {
-    background-color: black;
+    background-color: gray;
     color: white;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .key-maybe:hover {
-    background-color: black;
+    background-color: gray;
     color: white;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .key-wrong:hover {
-    background-color: black;
+    background-color: gray;
     color: white;
 }
 

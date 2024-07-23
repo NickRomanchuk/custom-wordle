@@ -3,7 +3,7 @@ import "./menu.css"
 import { LOWEST_WORD_LENGTH, NUM_GUESSES_DROPDOWN, WORD_LENGTH_DROPDOWN } from "constants/constants";
 
 export function Menu(menuProps) {
-
+    
     return (
         <Modal className="menu-modal" show={menuProps.showMenu}>
             <Modal.Body >
@@ -17,7 +17,7 @@ export function Menu(menuProps) {
                             defaultValue={menuProps.wordLength}
                             onChange={(e) => (menuProps.setWordLength(Number(e.currentTarget.value)))}>
                                 {WORD_LENGTH_DROPDOWN.map((option, index)=>
-                                    <option className="option" value={index + LOWEST_WORD_LENGTH}>{option}</option>
+                                    <option key={index} className="option" value={index + LOWEST_WORD_LENGTH}>{option}</option>
                                 )}
                         </Form.Select>
                     </Form>
@@ -32,7 +32,7 @@ export function Menu(menuProps) {
                             defaultValue={menuProps.numGuesses}
                             onChange={(e) => (menuProps.setNumGuesses(Number(e.currentTarget.value)))}>
                                 {NUM_GUESSES_DROPDOWN.map((option, index)=>
-                                    <option className="option" value={index+1}>{option}</option>
+                                    <option key={index} className="option" value={index+1}>{option}</option>
                                 )}
                         </Form.Select>
                     </Form>

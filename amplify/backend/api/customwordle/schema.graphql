@@ -1,0 +1,16 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY {globalAuthRule: AuthRule = { allow: public }} 
+
+type User @model {
+  userName: String! @primaryKey
+  password: String!
+  sevenSuccess: Int @default(value: "0")
+  sevenTotal: Int @default(value: "0")
+  sixSuccess: Int @default(value: "0")
+  sixTotal: Int @default(value: "0")
+  fiveSuccess: Int @default(value: "0")
+  fiveTotal: Int @default(value: "0")
+  fourSuccess: Int @default(value: "0")
+  fourTotal: Int @default(value: "0")
+}

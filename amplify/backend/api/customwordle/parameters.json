@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "customwordle",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcustomwordle704a9627",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2024-07-05T20:56:36.504Z"
+}

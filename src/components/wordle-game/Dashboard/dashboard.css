@@ -1,0 +1,14 @@
+.dashboard {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 8px;
+    text-align: center;
+}
+
+.guestDashboard {
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+}

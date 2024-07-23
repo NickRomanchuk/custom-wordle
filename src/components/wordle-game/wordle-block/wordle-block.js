@@ -7,7 +7,7 @@ export function WordleBlock(wordleblockProps) {
     let rows = Array.from(Array(wordleblockProps.rows).keys())       // make an array of size of rows
 
     return (
-            <Col md={8}>
+            <Col md={8} className="d-flex flex-column justify-content-center">
                 {rows.map((row, rowIndex)=>(
                     <Row key={rowIndex} className="pb-2">
                         {columns.map((column, colIndex)=>(

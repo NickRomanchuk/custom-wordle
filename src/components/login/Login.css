@@ -1,0 +1,17 @@
+.loginScreen {
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    
+}
+
+.loginButtons {
+    background-color: black;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 6px;
+}
+
+.loginButtons:hover {
+    background-color: darkgray;
+}

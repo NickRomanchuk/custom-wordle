@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Amplify } from 'aws-amplify';
+// @ts-ignore
+import amplifyconfig from "C:/Users/nickr/OneDrive/Desktop/GitHub/custom-wordle/src/amplifyconfiguration.json"
+Amplify.configure(amplifyconfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

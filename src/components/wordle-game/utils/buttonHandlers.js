@@ -37,7 +37,7 @@ export function handleEnter(correctWord, wordLength, numGuesses, guessedWords, s
 
     if (outOfGuesss) {                                                                          // if out of guesses
         updateColors(guess, correctWord, guessedWords.length - 1)                               // update colors
-        endGame(false, setMessage, setShowAlert, setShowMenu, setGuessedWords)  // end the game
+        endGame(false, setMessage, setShowAlert, setShowMenu, setGuessedWords, correctWord)  // end the game
     } else {                                                                                    // if guess is real word, not the correct word, and there are guesses remaining.....
         setGuessedWords([...guessedWords, ''])                                                  // start a new guess on the list of guesses
         updateColors(guess, correctWord, guessedWords.length - 1)                               // update colors

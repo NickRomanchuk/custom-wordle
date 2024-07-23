@@ -4,7 +4,7 @@
     font-weight: bold;
     background-color: white;
     border-radius: 0;
-    border-color: darkgray;
+    border-color: black !important;
     border-width: 2px;
     padding: 0;
 }
@@ -40,4 +40,14 @@
     border-color: #787C7E !important;
     border-width: 2px;
     padding: 0;
+}
+
+.solution {
+    border: none;
+    color: #6AAA64;
+    font-weight: bolder;
+    border-bottom: 2px black solid;
+    background-color: black;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 6px;
 }
